@@ -1,0 +1,17 @@
+.dialogsPage {
+    padding: 20px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas: "p m";
+}
+
+.dialogsPage .person a {
+    text-decoration: none;
+    grid-area: p;
+    color: midnightblue;
+}
+
+.message {
+    grid-area: m;
+}

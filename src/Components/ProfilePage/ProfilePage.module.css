@@ -1,0 +1,13 @@
+.profilePage {
+    padding: 15px;
+}
+
+.profilePage img {
+    width: 250px;
+    height: 250px;
+}
+
+
+.informationBlock {
+    margin-top: 20px;
+}
