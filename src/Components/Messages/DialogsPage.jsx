@@ -6,34 +6,24 @@ import style from './Dialogs.module.css';
 
 const DialogsPage = (props) => {
 
-    let dialogsItemsData = [
-        {id: 1, name: "Masha"},
-        {id: 2, name: "Egor"},
-        {id: 3, name: "Dimych"}
-    ];
 
-    let dialogsElement = dialogsItemsData.map(d =>
+
+    let dialogsElements = props.dialogsPersons.map(d =>
         <div>
             <DialogItem id={d.id} name={d.name}/>
         </div>);
 
 
 
-    let MessagesData = [
-        {id: 1, message: 'Hi!!!'},
-        {id: 2, message: 'Wish you good luck'},
-        {id: 3, message: "Don't stop!!!"}
-    ]
-
-    let MessageElement = MessagesData.map(
-        m => <div><MessageItem message={m.message} /></div> )
+    let MessageElement = props.dialogsMessages.map( m =>
+        <div><MessageItem message={m.message} /></div> )
 
 
     return (
         <div className={style.dialogsPage}>
             <div className={style.person}>
                 <div>
-                    {dialogsElement}
+                    {dialogsElements}
                 </div>
             </div>
             <div className={style.message}>

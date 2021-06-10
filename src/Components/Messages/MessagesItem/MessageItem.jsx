@@ -4,7 +4,9 @@ import React from "react";
 
 const MessageItem = (props) => {
     return (
-        <div className={s.message}>{props.message}</div>
+        <div className={s.message}>
+            {props.message}
+        </div>
     )
 }
 
