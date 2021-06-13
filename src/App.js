@@ -12,7 +12,6 @@ import DialogsPage from "./Components/Messages/DialogsPage";
 import Music from "./Components/Music/Music";
 
 
-
 const App = (props) => {
     return (
         <BrowserRouter>
@@ -21,27 +20,20 @@ const App = (props) => {
                 <Navbar/>
 
                 <div className='app-wrapper-content'>
-                    <Route path='/dialogs' render={() => <DialogsPage
-                        dialogsPersons={props.dialogsPersons}
-                        dialogsMessages={props.dialogsMessages}/>}/>
+
+                    <Route path='/dialogs' render={() => <DialogsPage DialogsPage={props.myState.DialogsPage}/>}/>
                     <Route path='/users' render={() => <Users/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
                     <Route path='/news' render={() => <News/>}/>
-
                     <Route path='/profile' render={() => <ProfilePage
-                        postState={props.myState.ProfilePage.postState}
-                        newPostText={props.myState.ProfilePage.newPostText}
-                        updateNewPostText={props.updateNewPostText}
-                        addPost={props.addPost}/>}/>
+                        ProfilePage={props.myState.ProfilePage}
+                        dispatch={props.dispatch}/>}/>
                     <Route path='/music' render={() => <Music/>}/>
                 </div>
             </div>
         </BrowserRouter>
     )
 }
-
-
-
 
 
 export default App;

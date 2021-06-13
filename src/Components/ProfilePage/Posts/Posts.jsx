@@ -1,20 +1,20 @@
 import React from 'react';
 import Post from "./Post";
-
-
-
+import {addPostAC, updateNewPostTextAC} from "../../../Redux/store";
 
 const Posts = (props) => {
 
+
+
    let newPostText = React.createRef();
     let onAddPost = () => {
-        props.addPost();
-        props.updateNewPostText('');
+        props.dispatch(addPostAC());
+        props.dispatch(updateNewPostTextAC());
     }
 
     let onPostChange = () => {
-        let text = newPostText.current.value;
-        props.updateNewPostText(text);
+        let newText = newPostText.current.value;
+        props.dispatch(updateNewPostTextAC(newText));
     }
 
     return (

@@ -1,3 +1,5 @@
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 
 let store = {
     _myState: {
@@ -26,26 +28,37 @@ let store = {
     getState() {
         return this._myState;
     },
-    addPost() {
-        let newPost =
-            {   id: 4,
-                message: this._myState.ProfilePage.newPostText,
-                likesCount: 0};
-        this._myState.ProfilePage.postState.push(newPost);
-        this._myState.ProfilePage.newPostText = '';
-        this._callSubscriber(this._myState);
-    },
-    updateNewPostText(text) {
-        this._myState.ProfilePage.newPostText = text;
-        this._callSubscriber(this._myState);
+    _callSubscriber() {
+        console.log('OOP State Changed')
     },
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-    _callSubscriber() {
-        console.log('OOP State Changed')
-    }
+
+    dispatch(action) {
+        if (action.type === ADD_POST) {
+            let newPost =
+                {   id: 4,
+                    message: this._myState.ProfilePage.newPostText,
+                    likesCount: 0};
+            this._myState.ProfilePage.postState.push(newPost);
+            this._myState.ProfilePage.newPostText = '';
+            this._callSubscriber(this._myState);
+        } else if(action.type === UPDATE_NEW_POST_TEXT) {
+            this._myState.ProfilePage.newPostText = action.text;
+            this._callSubscriber(this._myState);
+        }
+        }
 }
+
+
+export const addPostAC = () => {
+    return {type: ADD_POST}
+};
+export const updateNewPostTextAC = (newText) => {
+    return {type: UPDATE_NEW_POST_TEXT, text: newText}
+};
+
 
 export default store;
 

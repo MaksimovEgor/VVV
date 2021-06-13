@@ -7,19 +7,16 @@ import store from "./Redux/store";
 import {BrowserRouter} from "react-router-dom";
 
 
-let rerender = (myState) => {
+let rerender = () => {
     ReactDOM.render(
         <BrowserRouter>
             <React.StrictMode>
                 <App
-                     myState={myState}
-                     addPost={store.addPost.bind(store)}
-                     updateNewPostText={store.updateNewPostText.bind(store)}
-                     ProfilePage={store.getState.ProfilePage}
-                     DialogsPage={store.getState.DialogsPage}
+                     myState={store.getState()}
+                     dispatch={store.dispatch.bind(store)}
 
-                      dialogsPersons={myState.DialogsPage.dialogsPersons}
-                      dialogsMessages={myState.DialogsPage.dialogsMessages}/>
+                      /*dialogsPersons={myState.DialogsPage.dialogsPersons}
+                      dialogsMessages={myState.DialogsPage.dialogsMessages}*//>
             </React.StrictMode>
         </BrowserRouter>,
 

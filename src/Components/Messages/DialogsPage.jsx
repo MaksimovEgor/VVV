@@ -6,16 +6,20 @@ import style from './Dialogs.module.css';
 
 const DialogsPage = (props) => {
 
+const onSendMessage = () => {
+
+}
 
 
-    let dialogsElements = props.dialogsPersons.map(d =>
+
+    let dialogsElements = props.DialogsPage.dialogsPersons.map(d =>
         <div>
             <DialogItem id={d.id} name={d.name}/>
         </div>);
 
 
 
-    let MessageElement = props.dialogsMessages.map( m =>
+    let MessageElement = props.DialogsPage.dialogsMessages.map( m =>
         <div><MessageItem message={m.message} /></div> )
 
 
@@ -25,10 +29,17 @@ const DialogsPage = (props) => {
                 <div>
                     {dialogsElements}
                 </div>
+
             </div>
             <div className={style.message}>
                 {MessageElement}
+                <textarea />
+                <button onClick={onSendMessage}>Send message</button>
             </div>
+
+
+
+
         </div>
 
     )
