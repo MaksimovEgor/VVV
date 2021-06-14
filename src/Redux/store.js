@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const SEND_MESSAGE = 'SEND_MESSAGE';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 
 let store = {
     _myState: {
@@ -9,7 +11,7 @@ let store = {
                 {id: 2, message: "dcss", likesCount: 1233},
                 {id: 3, message: "vfvfvfvfvfv", likesCount: 123222}
             ],
-            newPostText: 'Пост из state'
+            newPostText: 'Post from state'
         },
         DialogsPage: {
             dialogsPersons: [
@@ -21,19 +23,15 @@ let store = {
                 {id: 1, message: 'Hi!!!'},
                 {id: 2, message: 'Wish you good luck'},
                 {id: 3, message: "Don't stop!!!"}
-            ]
+            ],
+            newMessageBody: ""
         }
-
     },
     getState() {
         return this._myState;
     },
-    _callSubscriber() {
-        console.log('OOP State Changed')
-    },
-    subscribe(observer) {
-        this._callSubscriber = observer;
-    },
+    _callSubscriber() {console.log('OOP State Changed')},
+    subscribe(observer) {this._callSubscriber = observer},
 
     dispatch(action) {
         if (action.type === ADD_POST) {
@@ -44,21 +42,28 @@ let store = {
             this._myState.ProfilePage.postState.push(newPost);
             this._myState.ProfilePage.newPostText = '';
             this._callSubscriber(this._myState);
-        } else if(action.type === UPDATE_NEW_POST_TEXT) {
+        }
+        else if(action.type === UPDATE_NEW_POST_TEXT) {
             this._myState.ProfilePage.newPostText = action.text;
+            this._callSubscriber(this._myState);
+        }
+        else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._myState.DialogsPage.newMessageBody = action.body;
+            this._callSubscriber(this._myState)
+        }
+        else if (action.type === SEND_MESSAGE) {
+            let body = this._myState.DialogsPage.newMessageBody;
+            this._myState.DialogsPage.newMessageBody = '';
+            this._myState.DialogsPage.dialogsMessages.push({id: 4, message: body})
             this._callSubscriber(this._myState);
         }
         }
 }
 
-
-export const addPostAC = () => {
-    return {type: ADD_POST}
-};
-export const updateNewPostTextAC = (newText) => {
-    return {type: UPDATE_NEW_POST_TEXT, text: newText}
-};
-
+export const addPostAC = () => ({type: ADD_POST});
+export const updateNewPostTextAC = (newText) => ({type: UPDATE_NEW_POST_TEXT, text: newText});
+export const sendMessageAC = () => ({type: SEND_MESSAGE});
+export const updateNewMessageBodyAC = (body) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body});
 
 export default store;
 

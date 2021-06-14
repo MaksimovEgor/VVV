@@ -11,12 +11,9 @@ let rerender = () => {
     ReactDOM.render(
         <BrowserRouter>
             <React.StrictMode>
-                <App
-                     myState={store.getState()}
+                <App store={store}
                      dispatch={store.dispatch.bind(store)}
-
-                      /*dialogsPersons={myState.DialogsPage.dialogsPersons}
-                      dialogsMessages={myState.DialogsPage.dialogsMessages}*//>
+                />
             </React.StrictMode>
         </BrowserRouter>,
 

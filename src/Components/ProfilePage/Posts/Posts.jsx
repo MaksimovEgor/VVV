@@ -4,8 +4,6 @@ import {addPostAC, updateNewPostTextAC} from "../../../Redux/store";
 
 const Posts = (props) => {
 
-
-
    let newPostText = React.createRef();
     let onAddPost = () => {
         props.dispatch(addPostAC());
@@ -24,14 +22,14 @@ const Posts = (props) => {
                 <textarea
                     ref={newPostText}
                     onChange={onPostChange}
-                    value={props.newPostText}/>
+                    value={props.store.getState().ProfilePage.newPostText}/>
             </div>
             <div>
                 <button onClick={onAddPost}>Add Post</button>
             </div>
 
             <div>
-                <Post postState={props.postState}/>
+                <Post postState={props.store.getState().ProfilePage.postState}/>
             </div>
 
         </div>
