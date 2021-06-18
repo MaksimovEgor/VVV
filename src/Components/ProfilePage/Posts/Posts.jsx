@@ -1,37 +1,35 @@
 import React from 'react';
 import Post from "./Post";
-import {addPostAC, updateNewPostTextAC} from "../../../Redux/store";
+import {addPostAC, updateNewPostTextAC} from "../../../Redux/profile-reducer";
 
 const Posts = (props) => {
 
-   let newPostText = React.createRef();
+    let state = props.store.getState();
     let onAddPost = () => {
         props.dispatch(addPostAC());
-        props.dispatch(updateNewPostTextAC());
     }
-
-    let onPostChange = () => {
-        let newText = newPostText.current.value;
+    let onPostChange = (e) => {
+        let newText = e.target.value;
         props.dispatch(updateNewPostTextAC(newText));
     }
 
+
     return (
         <div>
-
             <div>
                 <textarea
-                    ref={newPostText}
+                    value={state.profilePage.newPostText}
                     onChange={onPostChange}
-                    value={props.store.getState().ProfilePage.newPostText}/>
+                    placeholder='create post'
+                    />
             </div>
             <div>
                 <button onClick={onAddPost}>Add Post</button>
             </div>
 
             <div>
-                <Post postState={props.store.getState().ProfilePage.postState}/>
+                <Post postState={state.profilePage.postState}/>
             </div>
-
         </div>
     )
 }

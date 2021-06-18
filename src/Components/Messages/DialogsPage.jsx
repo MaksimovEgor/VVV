@@ -2,22 +2,21 @@ import React from 'react';
 import DialogItem from './DialogsItem/DialogItem';
 import MessageItem from './MessagesItem/MessageItem';
 import style from './Dialogs.module.css';
-import {sendMessageAC, updateNewMessageBodyAC} from "../../Redux/store";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../Redux/dialogs-reducer";
 
 
 const DialogsPage = (props) => {
+    let state = props.store.getState();
+    let dialogsElements = state.dialogsPage.dialogsPersons.map(d => <DialogItem id={d.id} name={d.name}/>);
+    let MessageElement = state.dialogsPage.dialogsMessages.map(m => <MessageItem message={m.message}/>);
 
-    let state = props.store.getState().DialogsPage;
-    let dialogsElements = state.dialogsPersons.map(d => <DialogItem id={d.id} name={d.name}/>);
-    let MessageElement = state.dialogsMessages.map(m => <MessageItem message={m.message}/>);
-    let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageAC());
+        props.dispatch(sendMessageAC());
     }
     let onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyAC(body))
+        props.dispatch(updateNewMessageBodyAC(body));
     }
 
     return (
@@ -28,7 +27,7 @@ const DialogsPage = (props) => {
             <div className={style.message}>
                 <div> {MessageElement} </div>
                 <textarea
-                    value={newMessageBody}
+                    value={state.dialogsPage.newMessageBody}
                     onChange={onNewMessageChange}
                     placeholder='enter'/>
                 <button onClick={onSendMessageClick}>Send message</button>
