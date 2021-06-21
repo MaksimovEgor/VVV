@@ -7,8 +7,6 @@ import Settings from "./Components/Settings/Settings";
 import {BrowserRouter} from "react-router-dom";
 import Users from "./Components/Users/Users";
 import {Route} from "react-router";
-import ProfilePage from "./Components/ProfilePage/ProfilePage";
-import DialogsPage from "./Components/Messages/DialogsPage";
 import Music from "./Components/Music/Music";
 import DialogsPageContainer from "./Components/Messages/DialogsPageContainer";
 import ProfilePageContainer from "./Components/ProfilePage/ProfilePageContainer";
@@ -22,10 +20,7 @@ const App = (props) => {
                 <Navbar/>
 
                 <div className='app-wrapper-content'>
-
-                    <Route path='/dialogs' render={() => <DialogsPageContainer
-
-                    />}/>
+                    <Route path='/dialogs' render={() => <DialogsPageContainer/>}/>
                     <Route path='/users' render={() => <Users/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
                     <Route path='/news' render={() => <News/>}/>
