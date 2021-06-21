@@ -10,6 +10,8 @@ import {Route} from "react-router";
 import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import DialogsPage from "./Components/Messages/DialogsPage";
 import Music from "./Components/Music/Music";
+import DialogsPageContainer from "./Components/Messages/DialogsPageContainer";
+import ProfilePageContainer from "./Components/ProfilePage/ProfilePageContainer";
 
 
 const App = (props) => {
@@ -21,17 +23,13 @@ const App = (props) => {
 
                 <div className='app-wrapper-content'>
 
-                    <Route path='/dialogs' render={() => <DialogsPage
-                        store={props.store}
-                        dispatch={props.dispatch}
+                    <Route path='/dialogs' render={() => <DialogsPageContainer
+
                     />}/>
                     <Route path='/users' render={() => <Users/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
                     <Route path='/news' render={() => <News/>}/>
-                    <Route path='/profile' render={() => <ProfilePage
-                        store={props.store}
-                        dispatch={props.dispatch}
-                    />}/>
+                    <Route path='/profile' render={() => <ProfilePageContainer />}/>
                     <Route path='/music' render={() => <Music/>}/>
                 </div>
             </div>

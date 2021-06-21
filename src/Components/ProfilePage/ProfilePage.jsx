@@ -1,9 +1,7 @@
 import React from 'react';
 import ava from '../../common/Images/ava.jpeg';
-import Posts from "./Posts/Posts";
 import style from './ProfilePage.module.css';
-
-
+import Posts from "./Posts/Posts";
 
 
 const ProfilePage = (props) => {
@@ -18,10 +16,11 @@ const ProfilePage = (props) => {
             <div><h6>About profile</h6></div>
 
 
-            <Posts store={props.store}
-                   dispatch={props.dispatch}/>
-
-
+            <Posts
+                onAddPost={props.onAddPost}
+                newPostText={props.newPostText}
+                onPostChange={props.onPostChange}
+                postState={props.postState}/>
         </div>
     )
 }
