@@ -25,5 +25,4 @@ rerender();
 store.subscribe(() => {
     rerender();
 });
-
 reportWebVitals();
