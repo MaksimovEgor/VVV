@@ -8,21 +8,14 @@ import {Provider} from "react-redux";
 import store from "./Redux/redux-store";
 
 
-let rerender = () => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <React.StrictMode>
-                <Provider store = {store}>
-                    <App />
-                </Provider>
-            </React.StrictMode>
-        </BrowserRouter>,
-
-        document.getElementById('root'))
-}
-
-rerender();
-store.subscribe(() => {
-    rerender();
-});
+ReactDOM.render(
+    <BrowserRouter>
+        <React.StrictMode>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </React.StrictMode>
+    </BrowserRouter>,
+    document.getElementById('root')
+)
 reportWebVitals();
