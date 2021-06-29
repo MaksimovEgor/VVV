@@ -12,25 +12,25 @@ const Users = (props) => {
     }
 
     return (
-        <div className={style.users}>
-            <div>
-                {pages.map(p => {
-                    return <span className={props.currentPage === p && style.selectedPage}
-                                 onClick={() => {
-                                     props.onPageChanged(p)
-                                 }}>
+            <div className={style.users}>
+                <div>
+                    {pages.map(p => {
+                        return <span className={props.currentPage === p && style.selectedPage}
+                                     onClick={() => {
+                                         props.onPageChanged(p)
+                                     }}>
                         {' ' + p + ' '}</span>
-                })}
-            </div>
+                    })}
+                </div>
 
 
-            {
-                props.users.map(u => <div key={u.id}>
-                    <div>
-                        <span><img src={u.photos.small ? u.photos.small : ava}/></span>
-                        <div>{u.name}</div>
-                    </div>
-                    <span>
+                {
+                    props.users.map(u => <div key={u.id}>
+                        <div>
+                            <span><img src={u.photos.small ? u.photos.small : ava}/></span>
+                            <div>{u.name}</div>
+                        </div>
+                        <span>
                     {u.followed ?
                         <button onClick={() => {
                             props.unfollow(u.id)
@@ -39,13 +39,13 @@ const Users = (props) => {
                             props.follow(u.id)
                         }}>Follow</button>}
                 </span>
-                    <div>
-                        <div>{'u.location.country'}</div>
-                        <div>{'u.location.city'}</div>
-                    </div>
-                </div>)
-            }
-        </div>
+                        <div>
+                            <div>{'u.location.country'}</div>
+                            <div>{'u.location.city'}</div>
+                        </div>
+                    </div>)
+                }
+            </div>
     )
 }
 
