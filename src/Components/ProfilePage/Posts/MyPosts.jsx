@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from "./Post";
 
-const Posts = (props) => {
+const MyPosts = (props) => {
     return (
         <div>
             <div>
@@ -22,4 +22,4 @@ const Posts = (props) => {
     )
 }
 
-export default Posts;
+export default MyPosts;

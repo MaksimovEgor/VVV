@@ -1,22 +1,15 @@
 import React from 'react';
-import ava from '../../common/Images/ava.jpeg';
 import style from './ProfilePage.module.css';
-import Posts from "./Posts/Posts";
+import MyPosts from "./Posts/MyPosts";
+import ProfileInfo from "./ProfileInfo";
 
 
-const ProfilePage = (props) => {
+const Profile = (props) => {
     return (
         <div className={style.profilePage}>
 
-            <div>
-                <img src={ava}/>
-            </div>
-
-            <div><b>STATUS</b></div>
-            <div><h6>About profile</h6></div>
-
-
-            <Posts
+            <ProfileInfo profile={props.profile}/>
+            <MyPosts
                 onAddPost={props.onAddPost}
                 newPostText={props.newPostText}
                 onPostChange={props.onPostChange}
@@ -26,4 +19,4 @@ const ProfilePage = (props) => {
 }
 
 
-export default ProfilePage;
+export default Profile;
