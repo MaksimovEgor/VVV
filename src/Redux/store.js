@@ -43,15 +43,3 @@ let store = {
 
 
 window.store = store;
-
-/*
-
-const reducers = combineReducers({
-  /!*  dialogsReducer,
-    profileReducer*!/
-
-})
-
-
-let store = createStore(reducers);
-*/

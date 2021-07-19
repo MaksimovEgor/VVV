@@ -1,5 +1,4 @@
 import React from 'react';
-import ava from '../../common/Images/ava.jpeg';
 import Preloader from "../../common/Preloader";
 
 
@@ -14,7 +13,10 @@ const ProfileInfo = (props) => {
             </div>
 
             <div><b>STATUS</b></div>
-            <div><h6>About profile</h6></div>
+            <div>
+                <h6>About profile</h6>
+                {props.profile.lookingForAJob}
+            </div>
 
         </div>
     )

@@ -8,29 +8,33 @@ import {withRouter} from "react-router";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-      /*  let userId = this.props.match.params.userId;*/
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2` /*+ userId*/)
+
+        let userId = this.props.match.params.userId;
+        if (!userId) {
+            userId = 15632;
+        }
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
             .then(response => {
                     this.props.setUserProfile(response.data);
                 }
             )
     }
+
     render() {
-         return <Profile {...this.props} profile={this.props.profile}/>
+        return <Profile {...this.props} profile={this.props.profile}/>
 
     }
 }
 
 let mapStateToProps = (state) => {
     return {
-       /* postState: state.profilePage.postState,
-        newPostText: state.profilePage.newPostText,*/
         profile: state.profilePage.profile,
         postState: state.profilePage.postState
     }
 }
 
-/*let mapDispatchToProps = (dispatch) => {
+let mdtp = (dispatch) => {
     return {
         onAddPost: () => {
             dispatch(addPostAC())
@@ -43,8 +47,8 @@ let mapStateToProps = (state) => {
             dispatch(setUserProfile(profile))
         }
     }
-}*/
+}
 
 let WithRouterUrl = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, {setUserProfile})(WithRouterUrl);
+export default connect(mapStateToProps, mdtp)(WithRouterUrl);
